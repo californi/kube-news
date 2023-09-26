@@ -1,4 +1,4 @@
-name: CI-CD
+name: CI
 
 on: 
   push: 
@@ -26,21 +26,4 @@ jobs:
           tags: |
             californibrs/live-kube-news:${{github.run_number}}
             californibrs/live-kube-news:latest
-  CD:
-    runs-on: ubuntu-latest
-    needs: [CI]
-    steps: 
-      - uses: actions/checkout@v3.1.0
-      
-      - name: Definindo o context
-        uses: Azure/k8s-set-context@v3.0
-        with:
-          method: kubeconfig
-          kubeconfig: ${{secrets.K8S_CONFIG}}
-      - name: Deploy to Kubernetes cluster
-        uses: Azure/k8s-deploy@v4
-        with:
-          images: californibrs/live-kube-news:${{github.run_number}}
-          manifests: |
-            k8s/deployment.yaml
-    
+
