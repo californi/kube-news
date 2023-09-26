@@ -24,8 +24,8 @@ jobs:
           file: ./src/Dockerfile
           push: true
           tags: |
-            fabricioveronez/live-kube-news:${{github.run_number}}
-            fabricioveronez/live-kube-news:latest
+            californibrs/live-kube-news:${{github.run_number}}
+            californibrs/live-kube-news:latest
   CD:
     runs-on: ubuntu-latest
     needs: [CI]
@@ -40,7 +40,7 @@ jobs:
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v4
         with:
-          images: fabricioveronez/live-kube-news:${{github.run_number}}
+          images: californibrs/live-kube-news:${{github.run_number}}
           manifests: |
             k8s/deployment.yaml
     
