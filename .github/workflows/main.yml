@@ -44,6 +44,8 @@ jobs:
           kubectl apply -f k8s/deployment.yaml
       - name: Test service URLs
         run: | 
+          echo -n "teste"
+          kubectl get pods
           minikube service list
           minikube service web --url
           echo -n "------------------opening the service------------------"
