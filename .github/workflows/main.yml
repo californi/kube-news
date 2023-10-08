@@ -44,7 +44,7 @@ jobs:
           kubectl apply -f k8s/deployment.yaml
       - name: Test service URLs
         run: | 
-          chmod +x watingPods=0
+          chmod +x set watingPods=0
           while [ $watingPods = 0 ]; do
               watingPods=$(kubectl get pods | grep web | grep -c Running)
               echo "Waiting to test."
